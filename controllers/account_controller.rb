@@ -25,9 +25,8 @@ class AccountController
             @account_view.show_balance(@account_model.balance)   
           when 3
             withdraw_amount = @account_view.get_withdraw_amount
-            if withdraw_amount <= @account_model.balance
-                @account_model.balance -= withdraw_amount
-                @account_view.show_withdraw_and_balance(withdraw_amount, @account_model.balance)
+            if @account_model.validate_amount(withdraw_amount)
+              @account_view.show_withdraw_and_balance(withdraw_amount, @account_model.balance)
             else 
                 @account_view.insufficient_funds(withdraw_amount)
             end

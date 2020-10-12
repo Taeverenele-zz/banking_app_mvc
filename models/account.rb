@@ -15,11 +15,12 @@ class Account
     end
   end
 
-  # def validate_amount(withdraw_amount)
-  #     if withdraw_amount <= @balance
-  #         return @balance -= withdraw_amount
-  #     else
-  #     return false
-  #     end
-  # end
+  def validate_amount(withdraw_amount)
+      if withdraw_amount <= @balance
+        @balance -= withdraw_amount
+        return true
+      else
+        return false
+      end
+  end
 end
